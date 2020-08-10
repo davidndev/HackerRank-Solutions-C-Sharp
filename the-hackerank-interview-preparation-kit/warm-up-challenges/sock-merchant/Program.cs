@@ -35,13 +35,14 @@ class Solution {
         //return total pairs
         return totalPairs;
 
-        //This 
+        //This failed. My output is 5, the correct answer is 3 pairs. So I'm over counting.
+        //I think I know the problem. It's counting the odd sock since I'm not clearing out
+        //previous sock when I update total pairs. Let's try again, see V2.
     }
 
-
     static int sockMerchant_V2(int n, int[] ar) {
-        int previousSock;
-        int totalPairs;
+        int previousSock = 0;
+        int totalPairs = 0;
 
         //Sort socks
         Array.Sort(ar);
@@ -50,6 +51,7 @@ class Solution {
         foreach(int sock in ar){
             if(previousSock == sock){ //Compare the previous sock with the current sock
                 totalPairs++; //If they are the same. It is a pair. Update total pairs
+                previousSock = 0; // **Once it finds a pair, reset previous sock
             }else{
                 previousSock = sock; //If not, set sock to previous sock and move on
             }
@@ -58,6 +60,9 @@ class Solution {
         //return total pairs
         return totalPairs;
 
+        // This works! The code actually ends up being simpler than I thought. Also, it's only
+        // running through the array once so that should be O(n). Array.Sort() is using QuickSort
+        // which is O(n log n) on average. Overall I'm pretty happy with the results.
     }
 
     static void Main(string[] args) {
