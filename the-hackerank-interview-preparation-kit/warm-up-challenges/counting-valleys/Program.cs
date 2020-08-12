@@ -20,19 +20,11 @@ class Solution {
         bool inAValley = false; //To keep track if Gary
         int totalValleys = 0;
 
-        foreach(char step in s){ //I love foreach loops. I'm looping through each char in the string.
-            if(step == 'U')
-            {
-                garyPostionY++; // +1 to gary position if it's U
-            }
-            else if(step == 'D')
-            {
-                garyPostionY--; // -1 to gary position if it's D
-            }
-            else 
-            {
-                //Not an expect input. Do nothing
-            }
+        //I love foreach loops. I'm looping through each char in the string.
+        foreach(char step in s)
+        { 
+            // **Call our new function
+            garyPostionY = UpdateGaryPositionY(garyPostionY, step); 
 
             //Make a note if Gary position is negative
             if(garyPostionY < 0)
@@ -52,6 +44,30 @@ class Solution {
         }
 
         return totalValleys;
+    }
+    /*
+    I see we can break out the code to convert U to +1 and D to -1. So let's do that.
+    This function take 2 arguements and will return gary's new position.
+
+    garyCurrentPosition - We need to know Gary current position in order to update it.
+    step - We'll also need Gary current step to know whether he is going up or down
+    */
+    int UpdateGaryPositionY(int garyCurrentPosition, char currentStep){
+
+        if(currentStep == 'U')
+        {
+            garyCurrentPosition++; // +1 to gary position if it's U
+        }
+        else if(currentStep == 'D')
+        {
+            garyCurrentPosition--; // -1 to gary position if it's D
+        }
+        else 
+        {
+            //Not an expect input. Do nothing
+        }
+
+        return garyCurrentPosition;
     }
 
 
