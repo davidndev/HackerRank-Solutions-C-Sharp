@@ -31,11 +31,11 @@ class Solution {
             {
                 inAValley = true; //Gary is in a valley
             }
-            //Make a note if Gary return to sea level surface
+            //Make a note if Gary returns to sea level
             else if (garyPostionY == 0){
                 if(inAValley){ // If gary was in a valley
-                    totalValleys++; //Update count to reflect Gary just got out of a valley
-                    inAValley = false; // Gary is now on the surface, so turn this to false
+                    totalValleys++; //Update count to reflect Gary has been through a valley
+                    inAValley = false; // Gary is now at sea level, so set this to false
                 }
             }
             else{
@@ -64,7 +64,7 @@ class Solution {
         }
         else 
         {
-            //Not an expect input. Do nothing
+            //Not an expected input. Do nothing
         }
 
         return garyCurrentPosition;
