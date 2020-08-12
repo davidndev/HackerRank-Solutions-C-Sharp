@@ -17,7 +17,7 @@ class Solution {
     // Complete the countingValleys function below.
     static int countingValleys(int n, string s) {
         int garyPostionY = 0;
-        bool inAValley = false; //To keep track if Gary
+        bool inAValley = false; //To keep track if Gary is in a valley
         int totalValleys = 0;
 
         //I love foreach loops. I'm looping through each char in the string.
@@ -34,7 +34,7 @@ class Solution {
             //Make a note if Gary return to sea level surface
             else if (garyPostionY == 0){
                 if(inAValley){ // If gary was in a valley
-                    totalValleys++; //Update count to reflect Gary been through a valley
+                    totalValleys++; //Update count to reflect Gary just got out of a valley
                     inAValley = false; // Gary is now on the surface, so turn this to false
                 }
             }
@@ -46,8 +46,8 @@ class Solution {
         return totalValleys;
     }
     /*
-    I see we can break out the code to convert U to +1 and D to -1. So let's do that.
-    This function take 2 arguements and will return gary's new position.
+    I see we can break out the code that converts U to +1 and D to -1. So let's do that.
+    This function take 2 arguements and will return Gary's new position.
 
     garyCurrentPosition - We need to know Gary current position in order to update it.
     step - We'll also need Gary current step to know whether he is going up or down
